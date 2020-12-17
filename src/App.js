@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import { useForm } from "./hooks/useForm";
+import { Hello } from "./Hello";
 
 function App() {
+  
+  const [values,handleChange] = useForm({email:'', password:''});
+  const [showHello, setShowHello] = useState(true);
+
+  // useEffect(()=>{
+  //   console.log('render')
+
+  //   return ()=>{
+  //     console.log('unmount')
+  //   }
+  // },[]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={()=> setShowHello(!showHello)}> toggle</button>
+      {showHello && <Hello/>}
+      <input
+        name="email"
+        value={values.email}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        value={values.password}
+        onChange={handleChange}
+      />
     </div>
   );
 }
