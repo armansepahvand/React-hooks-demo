@@ -6,7 +6,7 @@ function navbar() {
         <>
             <nav className="navbar">
                 <div className="navbar-container">
-                    
+                   
                 </div>
             </nav>
 
